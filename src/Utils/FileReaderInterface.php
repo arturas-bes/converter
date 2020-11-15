@@ -7,6 +7,8 @@ interface FileReaderInterface
     /**
      * @param $file
      */
-    public function read($file);
+    public function read($key);
+
+    public function getLineCount();
 
 }

@@ -1,51 +1,27 @@
 <?php
 
+namespace Cart\Controllers;
+use Cart\Classes\Cart;
 
-class HandleCartCommand
+class CartController
 {
     private $cartItems;
 
-    public function __construct()
+
+    /**
+     * @return mixed
+     */
+    public function getCartItems()
     {
-        //read file
-        //handle conversions
-        //update cart
-        //render view
+        return $this->cartItems;
     }
 
-    public function addItem($identifier = null)
+    /**
+     * @param mixed $cartItems
+     */
+    public function setCartItems($cartItems)
     {
-        if (!$identifier) {
-            return false;
-        }
-
-        return true;
+        $this->cartItems = $cartItems;
     }
 
-    public function removeItem($identifier = null)
-    {
-        if (!$identifier) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function showCartItems($items = null)
-    {
-        if (!$items) {
-            return false;
-        }
-
-        return $items;
-    }
-
-    public function updateCartView($cart = null)
-    {
-        if (!$cart) {
-            return false;
-        }
-
-        return $cart;
-    }
 }

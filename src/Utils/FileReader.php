@@ -9,12 +9,40 @@ class FileReader implements FileReaderInterface
 {
     private $fileContents;
 
-    public function read($file)
+    private $file;
+
+    public function __construct($file = null)
     {
-       $content = $this->getFileLines($file);
-       $this->formatItems($content);
+        $this->file = $file;
+    }
+
+    public function read($key)
+    {
+       $line = $this->getLine($key);
+       $this->formatItem($line);
 
        return $this->fileContents;
+    }
+
+    private function getLine($key)
+    {
+        $lines = file($this->file);
+        if (!$lines) {
+
+            return false;
+        }
+
+        return $lines[$key];
+    }
+
+    public function getLineCount()
+    {
+        $file = file($this->file);
+        if (!is_countable($file)) {
+            return false;
+        }
+
+        return count($file);
     }
 
     private function getFileLines($file)
@@ -41,13 +69,11 @@ class FileReader implements FileReaderInterface
         return $this->fileContents[] = $content;
     }
 
-    private function formatItems($line)
+    private function formatItem($line)
     {
         $result = null;
-        foreach ($line as $item) {
+        $result = $this->splitToArray($line);
 
-           $result[] = $this->splitToArray($item);
-        }
         if(!$result) {
             throw new Exception("Could not format items");
         }
