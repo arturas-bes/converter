@@ -6,12 +6,22 @@ use Exception;
 class CurrencyExchangeRates implements CurrencyExchangeProviderInterface
 {
 
+    //TODO implement logic if base currency is not constant
+    /**
+     * @var array
+     */
     private $rates = array(
         'USD' => 1.14,
         'EUR' => 1,
         'GBP' => 0.88
     );
 
+    /**
+     * @param null $fromCurrency
+     * @param null $toCurrency
+     * @return false|float|mixed
+     * @throws Exception
+     */
     public function getRate($fromCurrency = null, $toCurrency = null)
     {
         if (!$toCurrency) {

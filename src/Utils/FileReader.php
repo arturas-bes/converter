@@ -7,8 +7,14 @@ use function PHPUnit\Framework\throwException;
 
 class FileReader implements FileReaderInterface
 {
+    /**
+     * @var
+     */
     private $fileContents;
 
+    /**
+     * @var mixed|null
+     */
     private $file;
 
     public function __construct($file = null)
@@ -16,6 +22,10 @@ class FileReader implements FileReaderInterface
         $this->file = $file;
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public function read($key)
     {
        $line = $this->getLine($key);
@@ -24,9 +34,13 @@ class FileReader implements FileReaderInterface
        return $this->fileContents;
     }
 
+    /**
+     * @param $key
+     * @return false|mixed
+     */
     private function getLine($key)
     {
-        $lines = file($this->file);
+        $lines = file($this->file, FILE_IGNORE_NEW_LINES);
         if (!$lines) {
 
             return false;
@@ -35,6 +49,9 @@ class FileReader implements FileReaderInterface
         return $lines[$key];
     }
 
+    /**
+     * @return false|int
+     */
     public function getLineCount()
     {
         $file = file($this->file);
@@ -45,6 +62,10 @@ class FileReader implements FileReaderInterface
         return count($file);
     }
 
+    /**
+     * @param $file
+     * @return false
+     */
     private function getFileLines($file)
     {
         if (!$this->fileContents) {
@@ -64,14 +85,20 @@ class FileReader implements FileReaderInterface
 
     }
 
+    /**
+     * @param $content
+     * @return mixed
+     */
     private function setFileLines($content)
     {
         return $this->fileContents[] = $content;
     }
 
+    /**
+     * @param $line
+     */
     private function formatItem($line)
     {
-        $result = null;
         $result = $this->splitToArray($line);
 
         if(!$result) {
@@ -81,6 +108,10 @@ class FileReader implements FileReaderInterface
         $this->fileContents = $result;
     }
 
+    /**
+     * @param $item
+     * @return false|string[]
+     */
     private function splitToArray($item)
     {
         $utils = new Utilities();

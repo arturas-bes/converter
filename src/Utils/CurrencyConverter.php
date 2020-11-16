@@ -11,8 +11,6 @@ class CurrencyConverter implements CurrencyConverterInterface
      */
     protected $rateProvider;
 
-    private $baseCurrency = 'EUR';
-
     /**
      * @param $from
      * @param $to
@@ -22,15 +20,11 @@ class CurrencyConverter implements CurrencyConverterInterface
      */
     public function convert($from, $to, $amount = 1)
     {
-        if (!$from) {
-            $from = $this->baseCurrency;
-        }
-
         $fromCurrency = $this->formatCurrencyArgument($from);
         $toCurrency = $this->formatCurrencyArgument($to);
         $rate = $this->getRateProvider()->getRate($fromCurrency, $toCurrency);
 
-        return $rate * $amount;
+        return round($rate * $amount, 2);
     }
 
     /**
