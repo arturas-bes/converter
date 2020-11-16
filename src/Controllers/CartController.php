@@ -23,7 +23,7 @@ class CartController
         return $this->cart;
     }
 
-    public function handleCart($id, $name, $quantity, $price, $currency)
+    public function handleCart($id, $name, $quantity, $price, $currency): void
     {
         $this->getCurrencyConverter();
 
