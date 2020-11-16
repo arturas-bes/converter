@@ -1,6 +1,6 @@
 <?php
-
 namespace Cart\Controllers;
+
 use Cart\Classes\Cart;
 use Cart\InitCart;
 use Cart\Utils\CurrencyConverter;
@@ -123,7 +123,6 @@ class CartController
         }
         return false;
     }
-
 
     private function validateCartObj($id, $name, $quantity, $price, $currency)
     {

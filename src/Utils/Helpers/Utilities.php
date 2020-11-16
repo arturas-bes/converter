@@ -3,11 +3,10 @@ namespace Cart\Utils\Helpers;
 
 class Utilities
 {
-    public function multiExplode($delimeters, $string)
+    public function multiExplode($delimiters, $string)
     {
-        $ready = str_replace($delimeters, $delimeters[0], $string);
-        $result = explode($delimeters[0], $ready);
+        $ready = str_replace($delimiters, $delimiters[0], $string);
 
-        return  $result;
+        return explode($delimiters[0], $ready);
     }
 }

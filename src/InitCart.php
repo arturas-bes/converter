@@ -1,7 +1,6 @@
 <?php
 namespace Cart;
 
-use Cart\Classes\Cart;
 use Cart\Controllers\CartController;
 use Cart\Utils\FileReader;
 use Cart\Utils\FileReaderInterface;

@@ -1,21 +1,31 @@
 <?php
-
-
 namespace Cart\Classes;
-
-
 
 class Cart
 {
-
+    /**
+     * @var $id
+     */
     private $id;
 
+    /**
+     * @var $name
+     */
     private $name;
 
+    /**
+     * @var $quantity
+     */
     private $quantity;
 
+    /**
+     * @var $price
+     */
     private $price;
 
+    /**
+     * @var $currency
+     */
     private $currency;
 
 
@@ -47,7 +57,7 @@ class Cart
     /**
      * @param mixed $id
      */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -63,7 +73,7 @@ class Cart
     /**
      * @param mixed $name
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -79,7 +89,7 @@ class Cart
     /**
      * @param mixed $quantity
      */
-    public function setQuantity($quantity)
+    public function setQuantity($quantity): void
     {
         $this->quantity = $quantity;
     }
@@ -95,7 +105,7 @@ class Cart
     /**
      * @param mixed $price
      */
-    public function setPrice($price)
+    public function setPrice($price): void
     {
         $this->price = $price;
     }
@@ -111,7 +121,7 @@ class Cart
     /**
      * @param mixed $currency
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $this->currency = $currency;
     }

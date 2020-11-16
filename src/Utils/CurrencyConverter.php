@@ -43,7 +43,7 @@ class CurrencyConverter implements CurrencyConverterInterface
      * @param Provider\CurrencyExchangeProviderInterface $rateProvider
      * @return $this
      */
-    public function setRateProvider(Provider\CurrencyExchangeProviderInterface $rateProvider)
+    public function setRateProvider(Provider\CurrencyExchangeProviderInterface $rateProvider): self
     {
         $this->rateProvider = $rateProvider;
 
@@ -58,7 +58,7 @@ class CurrencyConverter implements CurrencyConverterInterface
     private function formatCurrencyArgument($data)
     {
         if (empty($data) || !is_string($data)) {
-            throw new Exception("Please provide valid argument to function");
+            throw new \RuntimeException("Please provide valid argument to function");
 
             return false;
         }

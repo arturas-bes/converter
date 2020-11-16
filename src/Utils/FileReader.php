@@ -3,7 +3,6 @@ namespace Cart\Utils;
 
 use Cart\Utils\Helpers\Utilities;
 use PHPUnit\Util\Exception;
-use function PHPUnit\Framework\throwException;
 
 class FileReader implements FileReaderInterface
 {
@@ -63,41 +62,9 @@ class FileReader implements FileReaderInterface
     }
 
     /**
-     * @param $file
-     * @return false
-     */
-    private function getFileLines($file)
-    {
-        if (!$this->fileContents) {
-            $file = fopen($file, "r");
-            if (!$file) {
-                return false;
-            }
-
-            while (($line = fgets($file)) !== false) {
-                $this->setFileLines($line);
-
-            }
-            fclose($file);
-        }
-
-        return $this->fileContents;
-
-    }
-
-    /**
-     * @param $content
-     * @return mixed
-     */
-    private function setFileLines($content)
-    {
-        return $this->fileContents[] = $content;
-    }
-
-    /**
      * @param $line
      */
-    private function formatItem($line)
+    private function formatItem($line): void
     {
         $result = $this->splitToArray($line);
 

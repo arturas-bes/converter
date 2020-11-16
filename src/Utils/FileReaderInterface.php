@@ -1,5 +1,4 @@
 <?php
-
 namespace Cart\Utils;
 
 interface FileReaderInterface

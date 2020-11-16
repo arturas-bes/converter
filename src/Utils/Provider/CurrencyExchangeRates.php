@@ -25,12 +25,12 @@ class CurrencyExchangeRates implements CurrencyExchangeProviderInterface
     public function getRate($fromCurrency = null, $toCurrency = null)
     {
         if (!$toCurrency) {
-            throw new Exception("Currency is not provided");
+            throw new \RuntimeException("Currency is not provided");
 
             return false;
         }
         if (!array_key_exists($toCurrency, $this->rates)) {
-            throw new Exception("Currency not accpeted for conversion");
+            throw new \RuntimeException("Currency not accpeted for conversion");
 
             return false;
         }
